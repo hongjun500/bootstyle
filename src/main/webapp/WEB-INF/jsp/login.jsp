@@ -33,7 +33,7 @@
     <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
     <script>
         // 判断是登录账号和密码是否为空
-        $().ready(function () {
+        $().ready(function(){
             console.log("dd");
             $("#formLogin").on("submit",function (){
                 var usercode=$("#usercode").val();

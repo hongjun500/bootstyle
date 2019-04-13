@@ -34,6 +34,11 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
+
+            <!--给静态资源放行-->
+            <!--亦可在web.xml中servlet-mapping&ndash;&gt;url-pattern使用*.do进行拦截-->
+            <!--<mvc:exclude-mapping path="/lib/**"/>-->
+            <!--<mvc:exclude-mapping path="/static/**"/>-->
             <bean class="com.boot.core.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

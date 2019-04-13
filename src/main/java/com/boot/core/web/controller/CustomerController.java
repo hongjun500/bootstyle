@@ -162,7 +162,7 @@ public class CustomerController {
 
     //批量删除
     @RequestMapping(value = "/deleteCustomers.do")
-    @ResponseBody
+
     public String  customerDeletes(int[] check_value){
         if (check_value == null ) {
             return "redirect:list.do";

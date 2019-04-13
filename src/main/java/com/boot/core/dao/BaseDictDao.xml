@@ -9,7 +9,5 @@
         from base_dict
         where dict_type_code = #{typecode}
     </select>
-    <select id="query" parameterType="String" resultType="baseDict">
-        select * from base_dict where dict_id=${dfd}
-    </select>
+
 </mapper>
