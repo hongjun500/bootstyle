@@ -69,7 +69,7 @@ public class CustomerController {
     }
 
 
-    //客户搜索
+    //客户查询
     @RequestMapping(value = "/search.do")
     public String  search(Model model){
         List<BaseDict> industryType=baseDictService.findBaseDictByTypeCode(INDUSTRY_TYPE);
@@ -162,7 +162,6 @@ public class CustomerController {
 
     //批量删除
     @RequestMapping(value = "/deleteCustomers.do")
-
     public String  customerDeletes(int[] check_value){
         if (check_value == null ) {
             return "redirect:list.do";

@@ -11,4 +11,6 @@ public interface UserDao {
 
     //根据账号和密码来登录
     public User getUser(@Param("user_code")String usercode,@Param("user_password")String password);
+    //查询管理用户的信息
+    public User adminUser();
 }

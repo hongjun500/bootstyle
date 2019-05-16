@@ -23,4 +23,12 @@ public class UserServiceImpl implements UserService {
          User user=this.userDao.getUser(usercode,password);
          return user;
     }
+
+    @Override
+    public User adminUser() {
+        User user=this.userDao.adminUser();
+        return user;
+    }
+
+
 }

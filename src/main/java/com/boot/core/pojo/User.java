@@ -14,6 +14,9 @@ public class User implements Serializable {
     private String user_name;     //用户名称
     private String user_password; //用户密码
     private Integer user_state;   //用户状态
+    private String user_position; //用户职位
+    private String user_email;    //用户邮箱
+    private String user_phone;    //用户手机号
     public Integer getUser_id() {
         return user_id;
     }
@@ -43,5 +46,31 @@ public class User implements Serializable {
     }
     public void setUser_state(Integer user_state) {
         this.user_state = user_state;
+    }
+
+
+
+    public String getUser_position() {
+        return user_position;
+    }
+
+    public void setUser_position(String user_position) {
+        this.user_position = user_position;
+    }
+
+    public String getUser_email() {
+        return user_email;
+    }
+
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
+    }
+
+    public String getUser_phone() {
+        return user_phone;
+    }
+
+    public void setUser_phone(String user_phone) {
+        this.user_phone = user_phone;
     }
 }

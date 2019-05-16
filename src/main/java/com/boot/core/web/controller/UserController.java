@@ -1,5 +1,6 @@
 package com.boot.core.web.controller;
 
+import com.boot.core.pojo.Customer;
 import com.boot.core.pojo.User;
 import com.boot.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
 
 
@@ -57,4 +59,13 @@ public class UserController {
         return "login";
     }
 
+
+    //用户管理显示集合
+    @RequestMapping(value = "/adminUser.do",method =RequestMethod.GET)
+    public String toAdminUser(Model model){
+        User user=userService.adminUser();
+        model.addAttribute("adminUser",user);
+
+        return "adminUser";
+    }
 }

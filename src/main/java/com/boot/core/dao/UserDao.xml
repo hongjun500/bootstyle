@@ -6,4 +6,8 @@
     <select id="getUser" parameterType="String" resultType="user">
         select * from user where user_code=#{user_code} and user_password=#{user_password} and user_state='1'
     </select>
+    <!--用户管理-->
+    <select id="adminUser" parameterType="String" resultType="user">
+        select user_id,user_name,user_position,user_email,user_state,user_phone from user
+    </select>
 </mapper>

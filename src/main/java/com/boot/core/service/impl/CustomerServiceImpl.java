@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import java.util.List;
 
 @Service(value = "customerService")
@@ -76,7 +77,7 @@ public class CustomerServiceImpl implements CustomerService{
         Customer customer=customerDao.getCustomerById(id);
         return customer;
     }
-    //修改空户
+    //修改客户
     @Override
     public int updateCustomer(Customer customer){
         return customerDao.updateCustomer(customer);
