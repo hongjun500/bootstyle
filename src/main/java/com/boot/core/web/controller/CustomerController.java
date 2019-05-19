@@ -85,7 +85,7 @@ public class CustomerController {
     }
 
     //执行搜索操作
-   @RequestMapping(value = "/Search.do")
+   @RequestMapping(value = "/searchDo.do")
    public String Search( @RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "8")Integer rows, String custSex,String custName, String custIndustry, String custLevel,Model model){
        Page<Customer> customers=customerService.findCustomerList(page,rows, custName,custSex,custIndustry,custLevel);
 
