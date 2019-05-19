@@ -53,7 +53,7 @@
 </head>
 <body>
 
-<div class="header">Bootstyle后台管理系统</div>
+<div class="header">Boot客户管理系统</div>
 <div class="loginWraper" >
 
     <div id="loginform" class="loginBox">
@@ -96,7 +96,7 @@
         </form>
     </div>
 </div>
-<div class="footer">Bootstyle后台管理系统</div>
+<div class="footer">Boot客户管理系统</div>
 
 </body>
 </html>
