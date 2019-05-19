@@ -1,6 +1,6 @@
 # Bootstyle
 * Boot客户管理系统<br>
-![bootstyle](https://github.com/hongjun500/bootstyle/master/logo/bootstyle.png)
+![bootstyle](https://github.com/hongjun500/bootstyle/blob/master/logo/bootstyle.png)
 此系统是个人毕业设计的项目，是一个为企业统一管理客户的系统。包含以下几个功能模块:用户登录、查看客户信息、添加新客户、修改客户信息等;
 * `独立开发`<br>            
 开发周期:一个月;
