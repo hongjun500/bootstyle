@@ -8,9 +8,15 @@ public interface CustomerDao {
     //客户列表
     public List<Customer> selectCustomerList(Customer customer);
 
-
     // 客户总数
     public Integer selectCustomerListCount(Customer customer);
+
+    //会员列表
+    public List<Customer> selectVipList(Customer customer);
+
+    //会员列表
+    public Integer selectVipListCount(Customer customer);
+
 
     //添加客户
      public int createCustomer(Customer customer);

@@ -68,12 +68,74 @@
             limit #{start},#{rows}
         </if>
     </select>
+
     <!-- 查询客户总数 -->
     <select id="selectCustomerListCount" parameterType="customer"
             resultType="Integer">
         select count(*) from customer
         <include refid="selectCustomerListWhere"/>
     </select>
+
+
+    <!--查询会员列表-->
+    <select id="selectVipList" parameterType="customer"
+            resultType="customer">
+        SELECT
+        cust_id,
+        cust_name,
+        cust_email,
+        b.dict_item_name cust_sex,
+        c.dict_item_name cust_industry,
+        d.dict_item_name cust_level,
+        cust_phone
+        FROM
+        customer a
+        LEFT JOIN (
+        SELECT
+        dict_id,
+        dict_item_name
+        FROM
+        base_dict
+        WHERE
+        dict_type_code = '002'
+        ) b ON a.cust_sex = b.dict_id
+        LEFT JOIN (
+        SELECT
+        dict_id,
+        dict_item_name
+        FROM
+        base_dict
+        WHERE
+        dict_type_code = '001'
+        ) c ON a.cust_industry = c.dict_id
+        LEFT JOIN (
+        SELECT
+        dict_id,
+        dict_item_name
+        FROM
+        base_dict
+        WHERE
+        dict_type_code = '003'
+        ) d ON a.cust_level = d.dict_id
+        WHERE cust_level='6'
+        <include refid="selectVipListWhere"/>
+        <!-- 执行分页查询 -->
+        <if test="start !=null and rows != null">
+            limit #{start},#{rows}
+        </if>
+    </select>
+
+
+
+    <!--查询会员总数-->
+    <select id="selectVipListCount" parameterType="customer"
+            resultType="Integer">
+        SELECT COUNT(*) FROM customer WHERE cust_level='6'
+        <include refid="selectVipListWhere"/>
+    </select>
+
+
+
 
     <!-- 添加客户 -->
     <insert id="createCustomer" parameterType="customer">

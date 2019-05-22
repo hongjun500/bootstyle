@@ -2,15 +2,24 @@ package com.boot.core.service;
 
 import com.boot.common.util.Page;
 import com.boot.core.pojo.Customer;
+import org.omg.PortableInterceptor.INACTIVE;
 
 public interface CustomerService {
 
-//   查询客户的集合
+    //查询客户的集合
     public Page<Customer> findCustomerList(Integer page, Integer rows,
                                            String custName, String custSex,
                                            String custIndustry, String custLevel);
-//    查询客户总数
+
+    //查询客户总数
     public Integer selectCustomerListCount(Customer customer);
+
+    //查询会员集合
+    public Page<Customer> findVipList(Integer page,Integer rows,String custName,String custSex,String custIndustry,String custLevel);
+
+    //查询会员总数
+    public Integer selectVipListCount(Customer customer);
+
     //添加客户
     public int createCustomer(Customer customer);
 

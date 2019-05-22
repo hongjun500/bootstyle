@@ -35,18 +35,6 @@
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
         <div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="#">Bootstyle后台管理</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="">Bootstyle</a>
-
-            <%--<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>--%>
-            <%--<nav class="nav navbar-nav">--%>
-                <%--<ul class="cl">--%>
-                    <%--<li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>--%>
-                        <%--<ul class="dropDown-menu menu radius box-shadow">--%>
-
-                            <%--<li><a href="javascript:;" onclick="member_add('添加客户','#','','510')"><i class="Hui-iconfont">&#xe60d;</i> 客户</a></li>--%>
-                        <%--</ul>--%>
-                    <%--</li>--%>
-                <%--</ul>--%>
-            <%--</nav>--%>
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                 <ul class="cl">
                     <li>管理员</li>
@@ -97,7 +85,7 @@
             </dd>
         </dl>
         <dl id="menu-member">
-            <dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dt><i class="Hui-iconfont">&#xe60d;</i> 会员中心<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
                     <li><a data-href="member-list.html" data-title="会员列表" href="javascript:;">会员列表</a></li>
