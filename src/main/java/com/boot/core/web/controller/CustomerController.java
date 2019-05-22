@@ -40,7 +40,9 @@ public class CustomerController {
    //客户显示集合
     @RequestMapping(value = "/list.do")
     public String tolist(@RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "8") Integer rows, String custName,String custSex, String custEmail,  String custIndustry, String custLevel,Customer customer, Model model){
+                       @RequestParam(defaultValue = "8") Integer rows,
+                         String custName,String custSex, String custEmail,
+                         String custIndustry, String custLevel,Customer customer, Model model){
 
 
         Page<Customer> customers;
@@ -60,9 +62,10 @@ public class CustomerController {
         model.addAttribute("sexType", sexType);
         model.addAttribute("industryType", industryType);
         model.addAttribute("levelType", levelType);
-        model.addAttribute("custName", custName);
+
+//        model.addAttribute("custName", custName);
         model.addAttribute("custSex", custSex);
-        model.addAttribute("custEmail",custEmail);
+//        model.addAttribute("custEmail",custEmail);
         model.addAttribute("custIndustry", custIndustry);
         model.addAttribute("custLevel", custLevel);
         return "customer_list";
@@ -98,12 +101,46 @@ public class CustomerController {
        model.addAttribute("sexType", sexType);
        model.addAttribute("industryType", industryType);
        model.addAttribute("levelType", levelType);
+
        model.addAttribute("custName", custName);
        model.addAttribute("custSex",custSex);
-
        model.addAttribute("custIndustry", custIndustry);
        model.addAttribute("custLevel", custLevel);
        return "customer_search";
+   }
+
+   //会员列表显示集合
+   @RequestMapping(value = "/vipList.do")
+   public String toVipList(@RequestParam(defaultValue = "1") Integer page,
+                        @RequestParam(defaultValue = "6") Integer rows,
+                        String custName,String custSex,
+                        String custIndustry, String custLevel,
+                        Customer customer, Model model){
+
+
+       Page<Customer> customers;
+       customers = customerService.findVipList(page,rows,custName,custSex,custIndustry,custLevel);
+
+       model.addAttribute("page",customers);
+
+       List<BaseDict> industryType=baseDictService.findBaseDictByTypeCode(INDUSTRY_TYPE);
+       List<BaseDict> sexType=baseDictService.findBaseDictByTypeCode(SEX_TYPE);
+       List<BaseDict> levelType=baseDictService.findBaseDictByTypeCode(LEVEL_TYPE);
+
+       //查询的会员总数；
+       Integer count=customerService.selectVipListCount(customer);
+       model.addAttribute("count",count);
+
+
+       model.addAttribute("sexType", sexType);
+       model.addAttribute("industryType", industryType);
+       model.addAttribute("levelType", levelType);
+
+       model.addAttribute("custName", custName);
+       model.addAttribute("custSex", custSex);
+       model.addAttribute("custIndustry", custIndustry);
+       model.addAttribute("custLevel", custLevel);
+       return "vip_list";
    }
 
     //添加

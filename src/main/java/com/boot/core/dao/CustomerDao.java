@@ -14,7 +14,7 @@ public interface CustomerDao {
     //会员列表
     public List<Customer> selectVipList(Customer customer);
 
-    //会员列表
+    //会员总数
     public Integer selectVipListCount(Customer customer);
 
 

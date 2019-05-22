@@ -47,7 +47,9 @@
             </a>
             <a href="javascript:;" onclick="clearCustomer()" data-target="#modal-add" data-toggle="modal" class="btn btn-primary radius">
                 <i class="Hui-iconfont">&#xe600;</i> 添加客户
-            </a> </span>  <span class="r" >共有数据：
+            </a>
+        </span>
+        <span class="r" >共有数据：
             <span style="color: red">
                 ${count}
             </span>条

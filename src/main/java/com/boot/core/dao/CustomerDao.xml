@@ -118,7 +118,7 @@
         dict_type_code = '003'
         ) d ON a.cust_level = d.dict_id
         WHERE cust_level='6'
-        <include refid="selectVipListWhere"/>
+        <include refid="selectCustomerListWhere"/>
         <!-- 执行分页查询 -->
         <if test="start !=null and rows != null">
             limit #{start},#{rows}
@@ -131,7 +131,7 @@
     <select id="selectVipListCount" parameterType="customer"
             resultType="Integer">
         SELECT COUNT(*) FROM customer WHERE cust_level='6'
-        <include refid="selectVipListWhere"/>
+        <include refid="selectCustomerListWhere"/>
     </select>
 
 

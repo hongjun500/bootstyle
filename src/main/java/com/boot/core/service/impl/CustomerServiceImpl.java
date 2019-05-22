@@ -52,8 +52,11 @@ public class CustomerServiceImpl implements CustomerService{
         return result;
     }
 
+    //会员列表显示集合
     @Override
-    public Page<Customer> findVipList(Integer page, Integer rows, String custName, String custSex, String custIndustry, String custLevel) {
+    public Page<Customer> findVipList(Integer page, Integer rows,
+                                      String custName, String custSex,
+                                      String custIndustry, String custLevel) {
         Customer customer=new Customer();
         if(StringUtils.isNotBlank(custName)){
             customer.setCust_name(custName);
@@ -94,6 +97,7 @@ public class CustomerServiceImpl implements CustomerService{
 
     }
 
+    //查询会员总数
     @Override
     public Integer selectVipListCount(Customer customer){
         return customerDao.selectVipListCount(customer);

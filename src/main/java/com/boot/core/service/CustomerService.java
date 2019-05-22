@@ -15,7 +15,9 @@ public interface CustomerService {
     public Integer selectCustomerListCount(Customer customer);
 
     //查询会员集合
-    public Page<Customer> findVipList(Integer page,Integer rows,String custName,String custSex,String custIndustry,String custLevel);
+    public Page<Customer> findVipList(Integer page,Integer rows,
+                                      String custName,String custSex,
+                                      String custIndustry,String custLevel);
 
     //查询会员总数
     public Integer selectVipListCount(Customer customer);
