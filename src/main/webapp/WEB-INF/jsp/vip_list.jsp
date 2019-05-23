@@ -110,17 +110,17 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>客户姓名：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input type="text" class="input-text" value="" placeholder="" id="new_custName" name="cust_name">
+                            <input type="text" class="input-text" value="" placeholder="" id="edit_custName" name="cust_name">
                         </div>
                     </div>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>性别：</label>
                         <div class="formControls col-xs-8 col-sm-9 skin-minimal">
                             <span class="select-box">
-                            <select class="select" id="new_custSex" name="cust_sex">
+                            <select class="select" id="edit_custSex" name="cust_sex">
                                 <option value="" selected>请选择</option>
                                 <c:forEach items="${sexType}" var="item">
-                                   <option value="${item.dict_id}">
+                                   <option value="${item.dict_id}" <c:if test="${item.dict_id==custSex}">selected</c:if>>
                                            ${item.dict_item_name}
                                    </option>
                                 </c:forEach>
@@ -132,22 +132,22 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input type="text" class="input-text" value="" placeholder="" id="new_custPhone" name="cust_phone">
+                            <input type="text" class="input-text" value="" placeholder="" id="edit_custPhone" name="cust_phone">
                         </div>
                     </div>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
                         <div class="formControls col-xs-8 col-sm-9">
-                            <input type="text" class="input-text" placeholder="@" id="new_custEmail" name="cust_email" >
+                            <input type="text" class="input-text" placeholder="@" id="edit_custEmail" name="cust_email" >
                         </div>
                     </div>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-3">客户行业：</label>
                         <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-							<select class="select" id="new_custIndustry" size="1" name="cust_industry">
+							<select class="select" id="edit_custIndustry" size="1" name="cust_industry">
 								<option value="" selected>请选择行业</option>
 								<c:forEach items="${industryType}" var="item">
-                                    <option value="${item.dict_id}">
+                                    <option value="${item.dict_id}" <c:if test="${item.dict_id==custIndustry}">selected</c:if>>
                                             ${item.dict_item_name}
                                     </option>
                                 </c:forEach>
@@ -157,10 +157,10 @@
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-3">客户级别：</label>
                         <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-							<select class="select" id="new_custLevel" size="1" name="cust_level">
+							<select class="select" id="edit_custLevel" size="1" name="cust_level">
 								<option value="" selected>请选择级别</option>
 								<c:forEach items="${levelType}" var="item">
-                                    <option value="${item.dict_id}">
+                                    <option value="${item.dict_id}" <c:if test="${item.dict_id==custLevel}">selected</c:if>>
                                             ${item.dict_item_name}
                                     </option>
                                 </c:forEach>
@@ -171,7 +171,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-                <button class="btn btn-primary">保存</button>
+                <button class="btn btn-primary" onclick="updateVip()">保存</button>
             </div>
         </div>
     </div>
@@ -214,6 +214,19 @@
                 $("#edit_custPhone").val(data.cust_phone);
             }
         });
+    }
+    //执行修改的操作
+    function updateVip() {
+        $.post("<%=basePath%>update.do",
+            $("#edit_customer_form").serialize(),function(data){
+                if(data =="OK"){
+                    alert("客户信息更新成功！");
+                    window.location.reload();
+                }else{
+                    alert("客户信息更新失败！");
+                    window.location.reload();
+                }
+            });
     }
 
 

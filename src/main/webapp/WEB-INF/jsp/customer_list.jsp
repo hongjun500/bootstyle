@@ -202,7 +202,7 @@
                         <div class="formControls col-xs-8 col-sm-9 skin-minimal">
                             <span class="select-box">
                             <select class="select" id="edit_custSex" name="cust_sex">
-                                <option value="">--请选择--</option>
+                                <option value="">请选择</option>
                                 <c:forEach items="${sexType}" var="item">
                                    <option value="${item.dict_id}" <c:if test="${item.dict_id==custSex}">selected</c:if>>
                                            ${item.dict_item_name}
@@ -230,7 +230,7 @@
 							<select class="select" id="edit_custIndustry" size="1" name="cust_industry">
 								<option value="" selected>请选择行业</option>
 								<c:forEach items="${industryType}" var="item">
-                                    <option value="${item.dict_id}">
+                                    <option value="${item.dict_id}" <c:if test="${item.dict_id==custIndustry}">selected</c:if>>
                                             ${item.dict_item_name}
                                     </option>
                                 </c:forEach>
