@@ -9,6 +9,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName()
+            + ":" + request.getServerPort() + path + "/";
+%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -35,7 +40,10 @@
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 会员中心 <span class="c-gray en">&gt;</span> 会员列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 
-    <div class="cl pd-5 bg-1 bk-gray"> <span class="l"> <a href="javascript:;" onclick="" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" data-target="#modal-add" data-toggle="modal" onclick="add()" class="btn btn-primary radius"  ><i class="Hui-iconfont">&#xe600;</i> 添加会员</a> </span>
+    <div class="cl pd-5 bg-1 bk-gray">
+        <span class="l">
+            <a href="javascript:;" onclick="" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+        </span>
         <span class="r" >共有数据：
             <span style="color: red">
                 ${count}
@@ -70,7 +78,10 @@
                 <td>${row.cust_email}</td>
                 <td>${row.cust_industry}</td>
                 <td>${row.cust_level}</td>
-                <td class="f-14"><a title="修改" href="javascript:;" data-target="#modal-edit" data-toggle="modal"  onclick="editCustomer(${row.cust_id})" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="deleteCustomer(${row.cust_id})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+                <td class="f-14">
+                    <a title="修改" href="javascript:;" data-target="#modal-edit" data-toggle="modal"  onclick="editVip(${row.cust_id})" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+                    <a title="删除" href="javascript:;" onclick="deleteCustomer(${row.cust_id})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -86,8 +97,8 @@
     </div>
 
 </div>
-<!--添加会员模态框-->
-<div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--修改会员模态框-->
+<div id="modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content radius">
             <div class="modal-header">
@@ -187,6 +198,24 @@
         });
 
     });
+    //修改客户,先获取客户的信息
+    function editVip(id) {
+        $.ajax({
+            type:"get",
+            url:"<%=basePath%>getCustomerById.do",
+            data:{"id":id},
+            success:function(data) {
+                $("#edit_cust_id").val(data.cust_id);
+                $("#edit_custName").val(data.cust_name);
+                $("#edit_custSex").val(data.cust_sex)
+                $("#edit_custIndustry").val(data.cust_industry)
+                $("#edit_custLevel").val(data.cust_level)
+                $("#edit_custEmail").val(data.cust_email);
+                $("#edit_custPhone").val(data.cust_phone);
+            }
+        });
+    }
+
 
 </script>
 </body>
