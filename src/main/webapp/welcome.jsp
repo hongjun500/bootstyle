@@ -15,7 +15,7 @@
 <body>
 
 
-欢迎用户：&nbsp;${USER_SESSION.user_name}使用Bootstyle后台管理系统！<br>
+欢迎用户：&nbsp;${USER_SESSION.user_name}使用Bootstyle客户管理系统！<br>
 
 IP:<%=GetIPAddress.getIpAddr(request)%>
 
