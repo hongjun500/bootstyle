@@ -312,7 +312,7 @@
             }
         });
     }
-    
+    // 执行修改的操作
     function updateCustomer() {
         $.post("<%=basePath%>update.do",
             $("#edit_customer_form").serialize(),function(data){

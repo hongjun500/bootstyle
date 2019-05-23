@@ -80,7 +80,7 @@
                 <td>${row.cust_level}</td>
                 <td class="f-14">
                     <a title="修改" href="javascript:;" data-target="#modal-edit" data-toggle="modal"  onclick="editVip(${row.cust_id})" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-                    <a title="删除" href="javascript:;" onclick="deleteCustomer(${row.cust_id})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                    <a title="删除" href="javascript:;" onclick="deleteVip(${row.cust_id})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
                 </td>
             </tr>
         </c:forEach>
@@ -106,7 +106,8 @@
                 <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:;">×</a>
             </div>
             <div class="modal-body">
-                <form action="" method="post" class="form form-horizontal" id="form-member-add">
+                <form action="" method="post" class="form form-horizontal" id="form-vip-edit">
+                    <input type="hidden" id="edit_cust_id" name="cust_id"/>
                     <div class="row cl">
                         <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>客户姓名：</label>
                         <div class="formControls col-xs-8 col-sm-9">
@@ -218,7 +219,7 @@
     //执行修改的操作
     function updateVip() {
         $.post("<%=basePath%>update.do",
-            $("#edit_customer_form").serialize(),function(data){
+            $("#form-vip-edit").serialize(),function(data){
                 if(data =="OK"){
                     alert("客户信息更新成功！");
                     window.location.reload();
@@ -227,6 +228,21 @@
                     window.location.reload();
                 }
             });
+    }
+
+    function deleteVip(id){
+        if(confirm('客户删除需谨慎，确定删除？')) {
+            $.post("<%=basePath%>delete.do",{"id":id},
+                function(data){
+                    if(data =="OK"){
+                        alert("客户删除成功！");
+                        window.location.reload();
+                    }else{
+                        alert("删除客户失败！");
+                        window.location.reload();
+                    }
+                });
+        }
     }
 
 
