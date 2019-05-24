@@ -41,7 +41,7 @@ public class CustomerController {
     @RequestMapping(value = "/list.do")
     public String tolist(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "8") Integer rows,
-                         String custName,String custSex, String custEmail,
+                         String custName,String custSex,
                          String custIndustry, String custLevel,Customer customer, Model model){
 
 
@@ -63,9 +63,7 @@ public class CustomerController {
         model.addAttribute("industryType", industryType);
         model.addAttribute("levelType", levelType);
 
-//        model.addAttribute("custName", custName);
         model.addAttribute("custSex", custSex);
-//        model.addAttribute("custEmail",custEmail);
         model.addAttribute("custIndustry", custIndustry);
         model.addAttribute("custLevel", custLevel);
         return "customer_list";
