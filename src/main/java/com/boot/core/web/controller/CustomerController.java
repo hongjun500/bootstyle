@@ -58,7 +58,6 @@ public class CustomerController {
        Integer count=customerService.selectCustomerListCount(customer);
        model.addAttribute("count",count);
 
-
         model.addAttribute("sexType", sexType);
         model.addAttribute("industryType", industryType);
         model.addAttribute("levelType", levelType);
