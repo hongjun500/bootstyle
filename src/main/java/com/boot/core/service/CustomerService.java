@@ -2,7 +2,6 @@ package com.boot.core.service;
 
 import com.boot.common.util.Page;
 import com.boot.core.pojo.Customer;
-import org.omg.PortableInterceptor.INACTIVE;
 
 public interface CustomerService {
 
