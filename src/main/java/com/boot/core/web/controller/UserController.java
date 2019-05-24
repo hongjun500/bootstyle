@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 /**
@@ -61,11 +62,12 @@ public class UserController {
 
 
     //用户管理显示集合
-    @RequestMapping(value = "/adminUser.do",method =RequestMethod.GET)
+    @RequestMapping(value = "/adminUserList.do",method =RequestMethod.GET)
     public String toAdminUser(Model model){
-        User user=userService.adminUser();
-        model.addAttribute("adminUser",user);
+        List<User> user=userService.findAdminUserList();
 
-        return "adminUser";
+        model.addAttribute("adminUserList",user);
+        return "admin_userList";
     }
+
 }

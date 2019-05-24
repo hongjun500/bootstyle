@@ -2,6 +2,8 @@ package com.boot.core.service;
 
 import com.boot.core.pojo.User;
 
+import java.util.List;
+
 
 /**
  * @author hongjun500
@@ -12,8 +14,7 @@ public interface UserService {
     //根据账号和密码来登录
     public User getUser(String usercode,String password);
 
-    //获取管理用户的信息
-    public User adminUser();
+    public List<User> findAdminUserList();
 
 
 }

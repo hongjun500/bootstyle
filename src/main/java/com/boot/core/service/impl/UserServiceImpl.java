@@ -6,6 +6,8 @@ import com.boot.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author hongjun500
  * @date 2019/2/24 14:07
@@ -25,9 +27,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User adminUser() {
-        User user=this.userDao.adminUser();
-        return user;
+    public List<User> findAdminUserList() {
+        List<User> userList=userDao.getAdminUserList();
+        return userList;
     }
 
 
