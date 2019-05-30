@@ -79,7 +79,7 @@
             <dd>
                 <ul>
                     <li><a data-href="${pageContext.request.contextPath}/vipList.do" data-title="会员列表" href="javascript:void(0);">会员列表</a></li>
-                    <li><a data-href="member-del.html" data-title="删除的会员" href="javascript:;">删除的会员</a></li>
+                    <li><a data-href="javascript:;" data-title="删除的会员" href="javascript:;">删除的会员</a></li>
                     <li><a data-href="member-level.html" data-title="等级管理" href="javascript:;">等级管理</a></li>
                 </ul>
             </dd>
