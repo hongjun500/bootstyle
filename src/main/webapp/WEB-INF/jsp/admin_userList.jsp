@@ -40,13 +40,13 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 管理员列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-    <div class="text-c"> 日期范围：
-        <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;">
-        -
-        <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;">
-        <input type="text" class="input-text" style="width:250px" placeholder="输入管理员名称" id="" name="">
-        <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
-    </div>
+    <form action="/adminUserList.do" method="get">
+        <div class="text-c">
+
+            <input type="text" class="input-text" style="width:250px" placeholder="输入管理员名称" id="user_Name" value="${adminUserName}" name="userName">
+            <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜管理员</button>
+        </div>
+    </form>
     <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_add('添加管理员','admin-add.html','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加管理员</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
     <table class="table table-border table-bordered table-bg">
         <thead>
@@ -75,7 +75,7 @@
                 <td>${row.user_phone}</td>
                 <td>${row.user_email}</td>
                 <td>${row.user_position}</td>
-                <td class="td-status"><span class="label label-success radius"></span></td>
+                <td class="td-status"><span class="label label-success radius">已启用</span></td>
                 <td class="td-manage">
                     <a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe615;</i></a>
                     <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
@@ -95,14 +95,7 @@
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
-    /*
-        参数解释：
-        title	标题
-        url		请求的url
-        id		需要操作的数据id
-        w		弹出层宽度（缺省调默认值）
-        h		弹出层高度（缺省调默认值）
-    */
+
     /*管理员-增加*/
     function admin_add(title,url,w,h){
         layer_show(title,url,w,h);
@@ -163,74 +156,7 @@
     }
 </script>
 <script>
-    //用户禁用
-    function member_stop( obj,name,id){
-        layer.confirm('确认要禁用id:'+id+', 昵称:"' +name+'"的用户吗？',function (index) {
-            $.ajax({
-                type:'post',
-                url:'/admin/service/member/enable',
-                datatype:'json',
-                data: {
-                    _enable:0,
-                    id: id,
-                    _token:"{{csrf_token()}}"
-                },
 
-                success:function(data){
-                    $(obj).parents("tr").find(".td-manage").prepend(
-                        ' <a style="text-decoration:none" onClick="member_start( this,\'{{$member->nickname}}\',\'{{$member->id}}\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe6e1;</i></a>'
-                    );
-                    //
-                    $(obj).parents('tr').find('.td-status').html('<span class="label label-defaunt radius">已停用</span>');
-
-                    $(obj).remove();
-                    layer.msg('已停用！',{icon:5,time:1000});
-
-                },
-                error: function(xhr, status, error) {
-                    console.log(xhr);
-                    console.log(status);
-                    console.log(error);
-                    layer.msg('ajax error', {icon:2, time:2000});
-                },
-
-            });
-        });
-
-    }
-    //用户解禁
-    function member_start(obj ,name,id){
-        layer.confirm('确认要解封id' +id+'昵称:“'+name+'”的用户吗？',function(index){
-            $.ajax({
-                type:'post',
-                url:'/admin/service/member/enable',
-                datatype:'json',
-                data:{
-                    _enable:1,
-                    id:id,
-                    _token:"{{csrf_token()}}"
-                },
-                success:function(data){
-                    $(obj).parents("tr").find(".td-manage").prepend(
-                        ' <a style="text-decoration:none" onClick="member_stop( this,\'{{$member->nickname}}\',\'{{$member->id}}\')" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe631;</i></a>'
-                    );
-                    //
-                    $(obj).parents('tr').find('.td-status').html('');
-
-                    $(obj).remove();
-                    layer.msg('已启用！',{icon:6,time:1000});
-
-                },
-                error: function(xhr, status, error) {
-                    console.log(xhr);
-                    console.log(status);
-                    console.log(error);
-                    layer.msg('ajax error', {icon:2, time:2000});
-                },
-            });
-
-        });
-    }
 </script>
 </body>
 </html>
