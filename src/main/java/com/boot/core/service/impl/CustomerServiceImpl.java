@@ -18,7 +18,7 @@ public class CustomerServiceImpl implements CustomerService{
 //    注入customerDao
     @Autowired
     private CustomerDao customerDao;
-
+    @Override
     public Page<Customer> findCustomerList(Integer page,Integer rows,String custName, String custSex, String custIndustry, String custLevel){
         Customer customer=new Customer();
         if(StringUtils.isNotBlank(custName)){
