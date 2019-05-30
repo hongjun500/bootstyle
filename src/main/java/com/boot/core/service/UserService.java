@@ -14,7 +14,7 @@ public interface UserService {
     //根据账号和密码来登录
     public User getUser(String usercode,String password);
 
-    public List<User> findAdminUserList();
+    public List<User> findAdminUserList(String userName);
 
 
 }

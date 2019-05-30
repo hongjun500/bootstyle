@@ -3,6 +3,7 @@ package com.boot.core.service.impl;
 import com.boot.core.dao.UserDao;
 import com.boot.core.pojo.User;
 import com.boot.core.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAdminUserList() {
-        List<User> userList=userDao.getAdminUserList();
+    public List<User> findAdminUserList(String userName) {
+        User user=new User();
+        if (StringUtils.isNotBlank(userName)){
+            user.setUser_name(userName);
+        }
+        List<User> userList=userDao.getAdminUserList(user);
         return userList;
     }
 

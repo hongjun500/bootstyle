@@ -62,11 +62,13 @@ public class UserController {
 
 
     //用户管理显示集合
-    @RequestMapping(value = "/adminUserList.do",method =RequestMethod.GET)
-    public String toAdminUser(Model model){
-        List<User> user=userService.findAdminUserList();
-
+    @RequestMapping(value = "/adminUserList.do")
+    public String toAdminUser(String userName,Model model){
+        List<User> user=userService.findAdminUserList(userName);
         model.addAttribute("adminUserList",user);
+
+
+        model.addAttribute("adminUserName",userName);
         return "admin_userList";
     }
 

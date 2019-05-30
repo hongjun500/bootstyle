@@ -33,7 +33,7 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 客户管理 <span class="c-gray en">&gt;</span> 客户查询 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-    <form class="form form-horizontal" id="form-customer-search" action="/searchDo.do">
+    <form class="form form-horizontal" id="form-customer-search" action="/searchDo.do" method="post">
         <div class="text-c"> 客户名称:
             <input type="text" class="input-text" id="customerName" name="custName" value="${custName}" style="width:150px">
             性别:

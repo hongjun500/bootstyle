@@ -14,5 +14,5 @@ public interface UserDao {
     public User getUser(@Param("user_code")String usercode,@Param("user_password")String password);
 
     //查询管理员列表
-    public List<User> getAdminUserList();
+    public List<User> getAdminUserList(User user);
 }
