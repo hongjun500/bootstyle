@@ -75,7 +75,7 @@
                 <td>${row.user_phone}</td>
                 <td>${row.user_email}</td>
                 <td>${row.user_position}</td>
-                <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                <td class="td-status"><span class="label label-success radius" id="state" onclick="state()">${row.user_state}</span></td>
                 <td class="td-manage">
                     <a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe615;</i></a>
                     <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
@@ -119,8 +119,16 @@
     }
 
     /*管理员-编辑*/
-    function admin_edit(title,url,id,w,h){
-        layer_show(title,url,w,h);
+    // function admin_edit(title,url,id,w,h){
+    //     layer_show(title,url,w,h);
+    // }
+
+    function state() {
+        var state=$("#state").val();
+        if(state==1){
+            return "已启用";
+        }
+        return "已停用";
     }
     /*管理员-停用*/
     function admin_stop(obj,id){
